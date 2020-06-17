@@ -147,7 +147,7 @@ namespace BookAPI.Controllers
             }
             else
             {
-                return BadRequest(new { message = "Unable to update author details" });
+                return BadRequest(new { message = "Unable to update user details" });
             }
         }
 
@@ -162,7 +162,7 @@ namespace BookAPI.Controllers
             }
             else
             {
-                return BadRequest(new { message = "Unable to delete author details" });
+                return BadRequest(new { message = "Unable to delete user details" });
             }
         }
     }
