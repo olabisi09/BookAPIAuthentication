@@ -23,7 +23,7 @@ namespace BookAPI.Services
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-            var user = _context.Users.SingleOrDefault(x => x.Username == username || x.Email == username);
+            var user = _context.BookUsers.SingleOrDefault(x => x.Username == username || x.Email == username);
 
             // check if username exists
             if (user == null)
@@ -42,7 +42,7 @@ namespace BookAPI.Services
             if (string.IsNullOrWhiteSpace(password))
                 throw new Exception("Password is required");
 
-            if (_context.Users.Any(x => x.Username == user.Username || x.Email == user.Email))
+            if (_context.BookUsers.Any(x => x.Username == user.Username || x.Email == user.Email))
                 throw new Exception("Username \"" + user.Username + "\" or Email \"" + user.Email + " is already taken");
 
             byte[] passwordHash, passwordSalt;
@@ -51,7 +51,7 @@ namespace BookAPI.Services
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
 
-            _context.Users.Add(user);
+            _context.BookUsers.Add(user);
             _context.SaveChanges();
 
             return user;
@@ -60,11 +60,11 @@ namespace BookAPI.Services
         public async Task<bool> Delete(int Id)
         {
             // find the entity/object
-            var user = await _context.Users.FindAsync(Id);
+            var user = await _context.BookUsers.FindAsync(Id);
 
             if (user != null)
             {
-                _context.Users.Remove(user);
+                _context.BookUsers.Remove(user);
                 _context.SaveChanges();
                 return true;
             }
@@ -75,19 +75,19 @@ namespace BookAPI.Services
         public async Task<IEnumerable<User>> GetAll()
         {
 
-            return await _context.Users.ToListAsync();
+            return await _context.BookUsers.ToListAsync();
         }
 
         public async Task<User> GetById(int Id)
         {
-            var user = await _context.Users.FindAsync(Id);
+            var user = await _context.BookUsers.FindAsync(Id);
 
             return user;
         }
 
         public async Task <bool> Update(User user, string password = null)
         {
-            var us = await _context.Users.FindAsync(user.Id);
+            var us = await _context.BookUsers.FindAsync(user.Id);
             if (us != null)
             {
                 us.FirstName = user.FirstName;

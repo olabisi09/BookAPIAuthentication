@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookAPI.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookAPI.Data
 {
-    public class BookAPIDataContext: DbContext
+    public class BookAPIDataContext: IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public BookAPIDataContext(DbContextOptions<BookAPIDataContext> options) : base(options)
         {
@@ -17,6 +18,6 @@ namespace BookAPI.Data
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<User> BookUsers { get; set; }
     }
 }

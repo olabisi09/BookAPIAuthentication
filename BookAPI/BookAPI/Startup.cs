@@ -5,12 +5,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using BookAPI.Data;
+using BookAPI.Entities;
 using BookAPI.Interfaces;
 using BookAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +29,7 @@ namespace BookAPI
 {
     public class Startup
     {
-        private object appSettingsSection;
+        //private object appSettingsSection;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -62,6 +64,11 @@ namespace BookAPI
                         Email = "olabisiolaoye09@gmail.com",
                         Url = "cyberinterns.slack.com"
                     },
+                    License = new License
+                    {
+                        Name = "",
+                        Url = "#"
+                    }
                 });
 
                 c.AddSecurityDefinition("Oauth2", new ApiKeyScheme
@@ -71,9 +78,17 @@ namespace BookAPI
                     Name = "Authorization",
                     Type = "apiKey"
                 });
-
-                c.OperationFilter<SecurityRequirementsOperationFilter>();
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> {
+                { "Bearer", Enumerable.Empty<string>() },
+                });
+                //c.OperationFilter<SecurityRequirementsOperationFilter>();
             });
+
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddUserManager<UserManager<ApplicationUser>>()
+                .AddRoleManager<RoleManager<ApplicationRole>>()
+                .AddSignInManager<SignInManager<ApplicationUser>>()
+                .AddEntityFrameworkStores<BookAPIDataContext>();
 
             services.AddAuthentication(x =>
             {
@@ -99,6 +114,7 @@ namespace BookAPI
             services.AddScoped<IGenre, GenreService>();
             services.AddScoped<ILanguage, LanguageService>();
             services.AddScoped<IUser, UserService>();
+            services.AddScoped<IAccount, AccountService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -112,6 +128,14 @@ namespace BookAPI
             {
                 app.UseHsts();
             }
+
+            app.UseAuthentication();
+            app.UseCors(x => x
+                           .AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .AllowCredentials());
+
             app.UseSwagger();
             app.UseSwaggerUi3(typeof(Startup).GetTypeInfo().Assembly, settings =>
             {

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookAPI.Entities;
 using BookAPI.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +13,7 @@ namespace BookAPI.Controllers
 {
     [Route("api/author")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AuthorController : ControllerBase
     {
         private IAuthor _author;
