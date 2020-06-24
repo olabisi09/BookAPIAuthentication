@@ -9,7 +9,7 @@ namespace BookAPI.Entities
 {
     public class ApplicationRole : IdentityRole
     {
-        [Required]
+        
         public string RoleName { get; set; }
         
     }

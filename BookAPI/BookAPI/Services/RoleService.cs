@@ -68,7 +68,7 @@ namespace BookAPI.Services
             var role = await _roleManager.FindByIdAsync(r.Id);
             if (role != null)
             {
-                role.RoleName = r.RoleName;
+                role.Name = r.Name;
                 return true;
             }
 

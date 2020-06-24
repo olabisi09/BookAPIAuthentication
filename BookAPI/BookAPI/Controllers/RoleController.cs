@@ -24,8 +24,8 @@ namespace BookAPI.Controllers
         public async Task<IActionResult> Post([FromBody] RoleDto registerRole)
         {
             ApplicationRole role = new ApplicationRole();
+            role.Name = registerRole.RoleName;
             role.RoleName = registerRole.RoleName;
-
 
             var newRole = await _role.CreateRole(role);
 
