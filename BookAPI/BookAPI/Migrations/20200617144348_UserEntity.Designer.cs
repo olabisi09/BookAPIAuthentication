@@ -142,7 +142,7 @@ namespace BookAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("BookUsers");
                 });
 #pragma warning restore 612, 618
         }

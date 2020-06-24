@@ -115,6 +115,7 @@ namespace BookAPI
             services.AddScoped<ILanguage, LanguageService>();
             services.AddScoped<IUser, UserService>();
             services.AddScoped<IAccount, AccountService>();
+            services.AddScoped<IRole, RoleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -129,7 +130,7 @@ namespace BookAPI
                 app.UseHsts();
             }
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
             app.UseCors(x => x
                            .AllowAnyOrigin()
                            .AllowAnyMethod()

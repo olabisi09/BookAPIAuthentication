@@ -5,8 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200622202019_IdentityManager.cs" />
+    <Compile Remove="Migrations\20200622202019_IdentityManager.Designer.cs" />
     <Compile Remove="Migrations\20200622202351_ApplicationUserModification.cs" />
     <Compile Remove="Migrations\20200622202351_ApplicationUserModification.Designer.cs" />
+    <Compile Remove="Migrations\20200623195509_RoleManager.cs" />
+    <Compile Remove="Migrations\20200623195509_RoleManager.Designer.cs" />
+    <Compile Remove="Migrations\20200623201517_MoreModifications.cs" />
+    <Compile Remove="Migrations\20200623201517_MoreModifications.Designer.cs" />
+    <Compile Remove="Migrations\20200623202859_AddTable.cs" />
+    <Compile Remove="Migrations\20200623202859_AddTable.Designer.cs" />
+    <Compile Remove="Migrations\20200623212939_RecoverEntity.cs" />
+    <Compile Remove="Migrations\20200623212939_RecoverEntity.Designer.cs" />
+    <Compile Remove="Migrations\20200623220614_Modifications.cs" />
+    <Compile Remove="Migrations\20200623220614_Modifications.Designer.cs" />
+    <Compile Remove="Migrations\20200623221519_MoreModify.cs" />
+    <Compile Remove="Migrations\20200623221519_MoreModify.Designer.cs" />
+    <Compile Remove="Migrations\20200623222612_AddTable.cs" />
+    <Compile Remove="Migrations\20200623222612_AddTable.Designer.cs" />
+    <Compile Remove="Migrations\20200623230523_Modify.cs" />
+    <Compile Remove="Migrations\20200623230523_Modify.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

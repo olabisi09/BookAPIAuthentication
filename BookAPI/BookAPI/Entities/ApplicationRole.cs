@@ -11,6 +11,6 @@ namespace BookAPI.Entities
     {
         [Required]
         public string RoleName { get; set; }
-
+        
     }
 }

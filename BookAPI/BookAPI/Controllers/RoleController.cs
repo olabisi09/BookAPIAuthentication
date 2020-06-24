@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BookAPI.Dtos;
+using BookAPI.Entities;
+using BookAPI.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,21 +10,79 @@ using System.Threading.Tasks;
 
 namespace BookAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/role")]
     [ApiController]
     public class RoleController : ControllerBase
     {
-        private readonly RoleManager<IdentityRole> _roleManager;
-        public RoleController(RoleManager<IdentityRole> roleManager)
+        private IRole _role;
+        public RoleController(IRole role)
         {
-            _roleManager = roleManager;
+            _role = role;
+        }
+
+        [HttpPost("create")]
+        public async Task<IActionResult> Post([FromBody] RoleDto registerRole)
+        {
+            ApplicationRole role = new ApplicationRole();
+            role.RoleName = registerRole.RoleName;
+
+
+            var newRole = await _role.CreateRole(role);
+
+            if (newRole)
+            {
+                return Ok(new { message = "Role Created" });
+
+            }
+            else
+            {
+                return BadRequest(new { message = "Role not created" });
+            }
         }
 
         [HttpGet]
-        public IActionResult CreateRole()
+        public async Task<IActionResult> GetAll()
         {
-            return View();
+            var r = await _role.GetAll();
+            return Ok(r);
         }
-        
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(String id)
+        {
+            var role = await _role.GetById(id);
+            return Ok(role);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(String id, [FromBody] ApplicationRole role)
+        {
+            role.Id = id;
+            var update = await _role.Update(role);
+
+            if (update)
+            {
+                return Ok("Role Updated");
+            }
+            else
+            {
+                return BadRequest(new { message = "Unable to update Role details" });
+            }
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(String id)
+        {
+            var deleteRole = await _role.DeleteRole(id);
+            if (deleteRole)
+            {
+                return Ok("Role Deleted");
+            }
+            else
+            {
+                return BadRequest(new { message = "Unable to delete Role details" });
+            }
+        }
     }
 }
