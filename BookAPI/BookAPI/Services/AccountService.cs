@@ -91,8 +91,6 @@ namespace BookAPI.Services
                         signInDetails.Username = checkUser.UserName;
                         signInDetails.Token = tokenHandler.WriteToken(token);
                         signInDetails.Expires = Expires;
-
-
                     }
 
                 }
