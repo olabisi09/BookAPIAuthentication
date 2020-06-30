@@ -1,6 +1,6 @@
 ﻿@model BookWeb.Entities.Category
 @{
-    ViewData["Title"] = "Category";
+    ViewData["Title"] = "Categories";
 }
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -10,7 +10,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="category" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
     <title>Xtreme Admin Template - The Ultimate Multipurpose admin template</title>
@@ -82,17 +82,17 @@
                                     <div asp-validation-summary="All" class="text-danger"></div>
                                     <div class="form-group">
                                         <label asp-for="CategoryName">Category Name</label>
-                                        <input type="text" asp-for="CategoryName" class="form-control" placeholder="Enter name of category" required="">
+                                        <input type="text" asp-for="CategoryName" class="form-control" id="categoryname" placeholder="Enter name of category" required="">
                                         <span asp-validation-for="CategoryName" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="Location">Location</label>
-                                        <input type="text" asp-for="Location" class="form-control" id="name" placeholder="Enter location" required="">
+                                        <input type="text" asp-for="Location" class="form-control" id="location" placeholder="Enter location" required="">
                                         <span asp-validation-for="Location" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="CreatedBy">Created By</label>
-                                        <input type="text" asp-for="CreatedBy" class="form-control" id="createdBy" placeholder="Created by..." required="">
+                                        <input type="text" asp-for="CreatedBy" class="form-control" id="createdBy" value="Olabisi" required="">
                                         <span asp-validation-for="CreatedBy" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">

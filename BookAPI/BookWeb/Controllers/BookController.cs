@@ -49,6 +49,39 @@ namespace BookWeb.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var editBook = await _book.GetById(id);
+
+            if (editBook == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(editBook);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Book book)
+        {
+            var updateBook = await _book.Update(book);
+
+            if (updateBook)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleteBook = await _book.Delete(id);
+            if (deleteBook)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -65,7 +65,7 @@ using BookWeb.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html dir=\"ltr\" lang=\"en\">\r\n");
             EndContext();
             BeginContext(92, 1116, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "75594aaa5b174189b47b8c308dd93c09", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "95bdbc4c0aca4d0b89398529a3992487", async() => {
                 BeginContext(98, 1103, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -104,7 +104,7 @@ using BookWeb.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(1210, 24814, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "46b09f09c6a441f29c00724530324481", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fc7be854282a476fbaac14c6e20274af", async() => {
                 BeginContext(1216, 1813, true);
                 WriteLiteral(@"
     <!-- ============================================================== -->
@@ -226,7 +226,7 @@ using BookWeb.Models;
                                                 ");
                 EndContext();
                 BeginContext(8216, 43, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a37522bb5824c8b91fbc2a76af3650c", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e16bb0508794ab59022eb673173f9e4", async() => {
                     BeginContext(8243, 7, true);
                     WriteLiteral("Monthly");
                     EndContext();
@@ -251,7 +251,7 @@ using BookWeb.Models;
                 WriteLiteral("\r\n                                                ");
                 EndContext();
                 BeginContext(8309, 32, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "96269df4a8844188af0707660b77d148", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "443d711eb90c43158b24133e098ab608", async() => {
                     BeginContext(8327, 5, true);
                     WriteLiteral("Daily");
                     EndContext();
@@ -273,7 +273,7 @@ using BookWeb.Models;
                 WriteLiteral("\r\n                                                ");
                 EndContext();
                 BeginContext(8391, 33, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c376b4f12a4409b88e30916dbdf1c11", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "23b27a2d44d84200b87e1238aa044a61", async() => {
                     BeginContext(8409, 6, true);
                     WriteLiteral("Weekly");
                     EndContext();
@@ -295,7 +295,7 @@ using BookWeb.Models;
                 WriteLiteral("\r\n                                                ");
                 EndContext();
                 BeginContext(8474, 33, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6da084d978be465ba3b0d510dc2dc75d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "23309abc86e74f37b7abc1c1f188bad1", async() => {
                     BeginContext(8492, 6, true);
                     WriteLiteral("Yearly");
                     EndContext();

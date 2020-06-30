@@ -115,8 +115,8 @@
                                             <td>@book.Summary</td>
                                             <td>@book.CreatedBy</td>
                                             <td>@book.DateCreated</td>
-                                            <td><a asp-action="Edit" asp-route-id="" alt="Edit"><i class="ti-pencil" aria-hidden="true"></i></a> </td>
-                                            <td><a asp-action="Delete" asp-route-id="" alt="Delete"><i class="ti-trash" aria-hidden="true"></i></a> </td>
+                                            <td><a asp-action="Edit" asp-route-id="@book.Id"><i class="ti-pencil" aria-hidden="true"></i></a> </td>
+                                            <td><a asp-action="Delete" asp-route-id="@book.Id" alt="Delete"><i class="ti-trash" aria-hidden="true"></i></a> </td>
                                         </tr>
                                         }
                                     </tbody>
@@ -136,18 +136,6 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <footer class="footer text-center">
-                All Rights Reserved by Xtreme Admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->

@@ -1,4 +1,4 @@
-﻿@model BookWeb.Entities.User
+﻿@model BookWeb.Dtos.UserDto
 @{
     ViewData["Title"] = "Users";
 }
@@ -78,7 +78,7 @@
                                 <h4 class="card-title">Add New User</h4>
                             </div>
                             <div class="table-responsive">
-                                <form asp-action="Create" method="post" class="form-horizontal form-material">
+                                <form asp-action="Create" method="post" class="mt-4">
                                     <div asp-validation-summary="All" class="text-danger"></div>
                                     <div class="form-group">
                                         <label asp-for="FirstName">First Name</label>
@@ -105,11 +105,15 @@
                                         <input type="text" asp-for="PhoneNo" class="form-control" id="phoneno" placeholder="Enter phone number" required="">
                                         <span asp-validation-for="PhoneNo" class="text-danger"></span>
                                     </div>
-                                    
                                     <div class="form-group">
-                                        <label asp-for="Dateregistered">Date Registered</label>
-                                        <input type="text" asp-for="Dateregistered" class="form-control" id="dateregistered" value="@DateTime.Now">
-                                        <span asp-validation-for="Dateregistered" class="text-danger"></span>
+                                        <label asp-for="Password">Password</label>
+                                        <input type="password" asp-for="Password" class="form-control" id="password" placeholder="Enter password" required="">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="DateRegistered">Date Registered</label>
+                                        <input type="text" asp-for="DateRegistered" class="form-control" id="dateregistered" value="@DateTime.Now">
+                                        <span asp-validation-for="DateRegistered" class="text-danger"></span>
                                     </div>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                     <button type="submit" class="btn btn-dark">Cancel</button>
@@ -117,16 +121,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- End PAge Content -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Right sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- .right-sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- End Right sidebar -->
-                    <!-- ============================================================== -->
+                    
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Container fluid  -->

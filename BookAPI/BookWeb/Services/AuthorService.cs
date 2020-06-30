@@ -70,8 +70,8 @@ namespace BookWeb.Services
             var aut = await _context.Authors.FindAsync(author.Id);
             if (aut != null)
             {
-                aut.Name = author.Name;
                 aut.Title = author.Title;
+                aut.Name = author.Name;
 
                 await _context.SaveChangesAsync();
                 return true;

@@ -71,6 +71,7 @@ namespace BookWeb.Services
             if (b != null)
             {
                 b.Title = book.Title;
+                b.Summary = book.Summary;
 
                 await _context.SaveChangesAsync();
                 return true;

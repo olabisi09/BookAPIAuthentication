@@ -48,6 +48,30 @@ namespace BookWeb.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var editLanguage = await _language.GetById(id);
+
+            if (editLanguage == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(editLanguage);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Language language)
+        {
+            var editLanguage = await _language.Update(language);
+
+            if (editLanguage)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

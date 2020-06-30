@@ -22,7 +22,7 @@ namespace BookAPI.Controllers
             _author = author;
         }
 
-        [HttpPost("add")]
+        [HttpPost]
         public void Post([FromBody] Author author)
         {
             _author.Add(author);

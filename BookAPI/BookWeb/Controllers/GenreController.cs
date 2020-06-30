@@ -34,7 +34,6 @@ namespace BookWeb.Controllers
             return View();
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Create(Genre genre)
         {
@@ -42,6 +41,41 @@ namespace BookWeb.Controllers
             var createGenre = await _genre.AddAsync(genre);
 
             if (createGenre)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var editGenre = await _genre.GetById(id);
+
+            if (editGenre == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(editGenre);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Genre genre)
+        {
+            //var editAuthor = await _author.GetById(id);
+            var editGenre = await _genre.Update(genre);
+
+            if (editGenre)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleteGenre = await _genre.Delete(id);
+            if (deleteGenre)
             {
                 return RedirectToAction("Index");
             }

@@ -42,3 +42,8 @@ C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\L
 C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\Language\Index.g.cshtml.cs
 C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\User\Index.g.cshtml.cs
 C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\User\Create.g.cshtml.cs
+C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\Author\Edit.g.cshtml.cs
+C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\Book\Edit.g.cshtml.cs
+C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\Category\Edit.g.cshtml.cs
+C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\Genre\Edit.g.cshtml.cs
+C:\Users\DELL\source\repos\BookAPI\BookWeb\obj\Debug\netcoreapp2.1\Razor\Views\Language\Edit.g.cshtml.cs

@@ -40,11 +40,11 @@ namespace BookWeb.Services
         public async Task<bool> Delete(int Id)
         {
             // find the entity/object
-            var category = await _context.Genres.FindAsync(Id);
+            var category = await _context.Category.FindAsync(Id);
 
             if (category != null)
             {
-                _context.Genres.Remove(category);
+                _context.Category.Remove(category);
                 _context.SaveChanges();
                 return true;
             }
@@ -67,11 +67,11 @@ namespace BookWeb.Services
 
         public async Task<bool> Update(Category category)
         {
-            var cat = await _context.Genres.FindAsync(category.Id);
+            var cat = await _context.Category.FindAsync(category.Id);
             if (cat != null)
             {
-                cat.Name = category.CategoryName;
-                cat.CreatedBy = category.Location;
+                cat.CategoryName = category.CategoryName;
+                cat.Location = category.Location;
 
                 await _context.SaveChangesAsync();
                 return true;

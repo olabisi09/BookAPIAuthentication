@@ -32,6 +32,42 @@ namespace BookWeb.Controllers
                 return View(model);
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var editAuthor = await _author.GetById(id);
+
+            if (editAuthor == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(editAuthor);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Author author)
+        {
+            //var editAuthor = await _author.GetById(id);
+            var editAuthor = await _author.Update(author);
+
+            if (editAuthor && ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleteAuthor = await _author.Delete(id);
+            if (deleteAuthor)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Create()
         {

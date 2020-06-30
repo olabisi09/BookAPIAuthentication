@@ -66,10 +66,10 @@ namespace BookWeb.Services
 
         public async Task<bool> Update(Language language)
         {
-            var cat = await _context.Genres.FindAsync(language.Id);
+            var cat = await _context.Languages.FindAsync(language.Id);
             if (cat != null)
             {
-                cat.Name = language.LanguageName;
+                cat.LanguageName = language.LanguageName;
 
                 await _context.SaveChangesAsync();
                 return true;
