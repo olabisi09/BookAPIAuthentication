@@ -68,7 +68,7 @@ using BookWeb.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html dir=\"ltr\" lang=\"en\">\r\n");
             EndContext();
             BeginContext(131, 1006, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9bd464c59ecf420a9023a6f22d5112a0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "644254e8b6fd49c5b6a5875287a47a19", async() => {
                 BeginContext(137, 993, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -106,7 +106,7 @@ using BookWeb.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(1139, 8405, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4fe7f6d41d9402580c85c2140ae3d57", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e938e48eb6e44e42978742fa276d6900", async() => {
                 BeginContext(1145, 1807, true);
                 WriteLiteral(@"
     <!-- ============================================================== -->
@@ -170,7 +170,7 @@ using BookWeb.Models;
                                 ");
                 EndContext();
                 BeginContext(4492, 146, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f327c6a53bd049b6a245ec56ea69b402", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5e75d920f0d4c1497a65041b7b41c8f", async() => {
                     BeginContext(4588, 46, true);
                     WriteLiteral("<i class=\"mdi mdi-account-plus\"></i>  New User");
                     EndContext();
@@ -281,7 +281,7 @@ using BookWeb.Models;
                 WriteLiteral("</td>\r\n                                                <td>");
                 EndContext();
                 BeginContext(6242, 104, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd44f760cf214edeb19c81aac4ebe0ae", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "63a2773964bd42f583cc94af27215af6", async() => {
                     BeginContext(6298, 44, true);
                     WriteLiteral("<i class=\"ti-pencil\" aria-hidden=\"true\"></i>");
                     EndContext();
@@ -317,7 +317,7 @@ using BookWeb.Models;
                 WriteLiteral(" </td>\r\n                                                <td>");
                 EndContext();
                 BeginContext(6406, 107, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a0ad8ca321554b5aa2b80f7083fa419e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8b87f49fe69a4ddc98ad24d1133ce7d2", async() => {
                     BeginContext(6466, 43, true);
                     WriteLiteral("<i class=\"ti-trash\" aria-hidden=\"true\"></i>");
                     EndContext();

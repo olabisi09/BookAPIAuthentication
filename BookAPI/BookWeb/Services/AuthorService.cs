@@ -19,7 +19,6 @@ namespace BookWeb.Services
 
         public void Add(Author author)
         {
-            author.DateCreated = DateTime.Now;
             _context.Add(author);
             _context.SaveChanges();
         }

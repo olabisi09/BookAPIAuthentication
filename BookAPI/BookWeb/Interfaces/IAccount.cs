@@ -1,5 +1,6 @@
 ﻿using BookWeb.Dtos;
 using BookWeb.Entities;
+using BookWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,9 @@ namespace BookWeb.Interfaces
         Task<bool> CreateUser(ApplicationUser user, string password);
 
         Task<SignInModel> SignIn(LoginDto loginDetails);
+
+        Task<bool> Login(LoginViewModel loginModel);
+
+        //Task<bool> Signup(ApplicationUser user, string password);
     }
 }

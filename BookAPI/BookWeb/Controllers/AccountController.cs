@@ -1,7 +1,9 @@
 ﻿using BookWeb.Dtos;
 using BookWeb.Entities;
+using BookWeb.Enums;
 using BookWeb.Interfaces;
 using BookWeb.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,99 +13,84 @@ using System.Threading.Tasks;
 
 namespace BookWeb.Controllers
 {
-    //[Route("api/[controller]")]
-    //[ApiController]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
-        private IAccount _account;
-        private IUser _user;
-        public AccountController(IAccount account, IUser user)
+
+        private readonly IAccount _account;
+
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly RoleManager<ApplicationRole> _roleManager;
+        //string Message = "";
+
+        //public AccountController(SignInManager<ApplicationUser> signInManager,
+        //    RoleManager<ApplicationRole> roleManager,
+        //    UserManager<ApplicationUser> userManager)
+        //{
+        //    _signInManager = signInManager;
+        //    _userManager = userManager;
+        //    _roleManager = roleManager;
+        //}
+
+
+        public AccountController(IAccount account, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _account = account;
-            _user = user;
+            _signInManager = signInManager;
+            _userManager = userManager;
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Signup()
+        {
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] UserDto registerUser)
+        public async Task<IActionResult> Signup(ApplicationUser user, SignUpViewModel model)
         {
-            ApplicationUser user = new ApplicationUser();
+            var sign = await _account.CreateUser(user, model.Password);
 
-            user.FirstName = registerUser.FirstName;
-            user.LastName = registerUser.LastName;
-            user.UserName = registerUser.Username;
-            user.Email = registerUser.Email;
-
-
-            var newUser = await _account.CreateUser(user, registerUser.Password);
-            if (newUser)
-                return RedirectToAction("Index");
-
+            if (sign)
+            {
+                Alert("Account created successfully", NotificationType.success);
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel login)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "UserName/Password is incorrect");
+                return View();
+            }
+
+            var signin = await _account.Login(login);
+
+            if (signin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> LogOut()
         {
 
-            return View();
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
+
+
         }
 
-        [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody] LoginDto userDto)
-        {
-            var user = await _account.SignIn(userDto);
-
-            if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
-
-            return Ok(user);
-        }
-
-        public async Task<IActionResult> Index()
-        {
-            var model = await _user.GetAll();
-
-            if (model != null)
-                return View(model);
-            return View();
-        }
-
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetById(int id)
-        //{
-        //    var user = await _user.GetById(id);
-        //    return Ok(user);
-        //}
-
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Put(int id, [FromBody] User user)
-        //{
-        //    user.Id = id;
-        //    var updateUser = await _user.Update(user);
-
-        //    if (updateUser)
-        //    {
-        //        return Ok("User Updated");
-        //    }
-        //    else
-        //    {
-        //        return BadRequest(new { message = "Unable to update user details" });
-        //    }
-        //}
-
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    var deleteUser = await _user.Delete(id);
-        //    if (deleteUser)
-        //    {
-        //        return Ok("User Deleted");
-        //    }
-        //    else
-        //    {
-        //        return BadRequest(new { message = "Unable to delete user details" });
-        //    }
-        //}
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

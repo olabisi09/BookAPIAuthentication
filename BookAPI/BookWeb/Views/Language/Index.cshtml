@@ -100,7 +100,7 @@
                                                 <td>@language.Id</td>
                                                 <td>@language.LanguageName</td>
                                                 <td><a asp-action="Edit" asp-route-id="@language.Id" alt="Edit"><i class="ti-pencil" aria-hidden="true"></i></a> </td>
-                                                <td><a asp-action="Delete" asp-route-id="@language.Id" alt="Delete"><i class="ti-trash" aria-hidden="true"></i></a> </td>
+                                                <td><a asp-action="Delete" asp-route-id="@language.Id" alt="Delete"><i class="ti-trash" aria-hidden="true" onclick="return confirm('Are you sure you want to delete the user @language.LanguageName?')"></i></a> </td>
                                             </tr>
                                         }
                                     </tbody>

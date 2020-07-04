@@ -18,7 +18,7 @@ namespace BookWeb.Controllers
 {
     //[Route("api/user")]
     //[ApiController]
-    public class UserController : Controller
+    public class UserController : Microsoft.AspNetCore.Mvc.Controller
     {
         private IAccount _account;
         private IUser _userService;

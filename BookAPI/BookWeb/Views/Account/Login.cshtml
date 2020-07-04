@@ -1,0 +1,103 @@
+﻿@model BookWeb.Models.LoginViewModel
+@{
+    //ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <title>Xtreme Admin Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link href="../../dist/css/style.min.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <div class="align-content-center">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Sign In</h4>
+                    </div>
+                    <form style="align-self: center;" class="form-horizontal form-material" id="loginform" asp-controller="Account" method="post">
+                        <div class="col-sm-12 text-center">
+
+
+                            <h3 class="box-title mb-3">Sign In</h3>
+                        </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Password" class="form-control" placeholder="Password" type="password"/>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="checkbox checkbox-primary float-left pt-0">
+                                    <input id="checkbox-signup" type="checkbox">
+                                    <label for="checkbox-signup"> Remember me </label>
+                                </div> <a asp-action="Signup" class="text-dark float-right"><i class="fa fa-lock mr-1"></i>Don't have an account? Sign up.</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-center mt-3">
+                            <div class="col-xs-12">
+                                <button asp-action="Login" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../../dist/js/app-style-switcher.js"></script>
+        <!--Wave Effects -->
+        <script src="../../dist/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="../../dist/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="../../dist/js/custom.js"></script>
+    </div>
+</body>
+</html>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

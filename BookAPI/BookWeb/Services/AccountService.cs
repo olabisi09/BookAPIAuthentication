@@ -1,6 +1,7 @@
 ﻿using BookWeb.Dtos;
 using BookWeb.Entities;
 using BookWeb.Interfaces;
+using BookWeb.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,7 +19,9 @@ namespace BookWeb.Services
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly UserManager<SignUpViewModel> _userSignUp;
         private readonly RoleManager<ApplicationRole> _roleManager;
+
         private IConfiguration _config;
         public AccountService(SignInManager<ApplicationUser> signInManager,
                                 UserManager<ApplicationUser> userManager,
@@ -91,15 +94,61 @@ namespace BookWeb.Services
                         signInDetails.Username = checkUser.UserName;
                         signInDetails.Token = tokenHandler.WriteToken(token);
                         signInDetails.Expires = Expires;
+
+
                     }
 
                 }
                 return signInDetails;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return signInDetails;
             }
         }
+        public async Task<bool> Login(LoginViewModel loginDetails)
+        {
+
+            try
+            {
+                // check if user exist
+                var checkUser = await _userManager.FindByEmailAsync(loginDetails.Email);
+
+                if (checkUser != null)
+                {
+                    //signin user
+                    var signInResult = await _signInManager.PasswordSignInAsync(checkUser, loginDetails.Password, false, false);
+                    // check if signin is successful
+                    if (signInResult.Succeeded)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        //public async Task<bool> Signup(ApplicationUser user, string password)
+        //{
+        //    try
+        //    {
+        //        var checkUser = await _userManager.FindByEmailAsync(user.Email);
+        //        if (checkUser == null)
+        //        {
+        //            var userResult = await _userManager.CreateAsync(user, password);
+        //            if (userResult.Succeeded)
+        //                return true;
+        //        }
+        //        return false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

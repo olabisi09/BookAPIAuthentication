@@ -10,18 +10,23 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BookWeb.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
+using BookWeb.Enums;
 
 namespace BookWeb.Controllers
 {
     //[Route("api/author")]
     //[ApiController]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class AuthorController : Controller
+    public class AuthorController : BaseController
     {
         private IAuthor _author;
-        public AuthorController(IAuthor author)
+
+        private readonly UserManager<ApplicationUser> _userManager;
+        public AuthorController(IAuthor author, UserManager<ApplicationUser> userManager)
         {
             _author = author;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -30,6 +35,38 @@ namespace BookWeb.Controllers
 
             if (model != null)
                 return View(model);
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Author author)
+        {
+            author.CreatedBy = _userManager.GetUserName(User);
+            var createAuthor = await _author.AddAsync(author);
+
+            //if (createAuthor)
+            //{
+            //    return RedirectToAction("Index");
+            //}
+
+            if (createAuthor)
+            {
+                Alert("Author created successfully.", NotificationType.success);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Alert("Author not created!", NotificationType.error);
+            }
+
+
             return View();
         }
 
@@ -53,7 +90,12 @@ namespace BookWeb.Controllers
 
             if (editAuthor && ModelState.IsValid)
             {
+                Alert("Author edited successfully", NotificationType.success);
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                Alert("Author not edited", NotificationType.error);
             }
             return View();
         }
@@ -63,32 +105,15 @@ namespace BookWeb.Controllers
             var deleteAuthor = await _author.Delete(id);
             if (deleteAuthor)
             {
+                Alert("Author deleted successfully", NotificationType.success);
                 return RedirectToAction("Index");
             }
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-
-            return View();
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> Create(Author author)
-        {
-
-            var createAuthor = await _author.AddAsync(author);
-
-            if (createAuthor)
+            else
             {
-                return RedirectToAction("Index");
+                Alert("Author not deleted", NotificationType.error);
             }
             return View();
         }
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

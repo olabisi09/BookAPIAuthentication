@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using BookWeb.Entities;
+using BookWeb.Enums;
 using BookWeb.Interfaces;
 using BookWeb.Models;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookWeb.Controllers
 {
-    public class LanguageController : Controller
+    public class LanguageController : BaseController
     {
         private ILanguage _language;
         public LanguageController(ILanguage language)
@@ -43,7 +44,12 @@ namespace BookWeb.Controllers
 
             if (createLanguage)
             {
+                Alert("Language created successfully", NotificationType.success);
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                Alert("Language not created", NotificationType.error);
             }
             return View();
         }
@@ -67,11 +73,29 @@ namespace BookWeb.Controllers
 
             if (editLanguage)
             {
+                Alert("Language edited successfully", NotificationType.success);
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                Alert("Language not edited", NotificationType.error);
             }
             return View();
         }
-
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deleteLanguage = await _language.Delete(id);
+            if (deleteLanguage)
+            {
+                Alert("Language deleted successfully", NotificationType.success);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Alert("Language not deleted", NotificationType.error);
+            }
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
